@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_filter :authenticate_broker!
   def index
     movie = Struct.new(:id, :name)
     @movies = [movie.new(1, 'name1'), movie.new(2, 'name2')]

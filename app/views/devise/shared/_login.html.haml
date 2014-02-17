@@ -1,0 +1,37 @@
+.widget-body
+  .widget-main
+    %h4.header.blue.lighter.bigger
+      %i.fa.fa-coffee.green.icon-coffee
+      Please Enter Your Information
+    .space-6
+
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      %fieldset
+        %label.block.clearfix
+          %span.block.input-icon.input-icon-right
+            = f.email_field :email, :autofocus => true, :class => 'form-control', :placeholder => 'Email'
+            %i.fa.fa-envelope.icon-envelope
+        %label.block.clearfix
+          %span.block.input-icon.input-icon-right
+            = f.password_field :password, :class => 'form-control', :placeholder => 'Password'
+            %i.fa.fa-lock.icon-lock
+        .space
+        - if devise_mapping.rememberable?
+          .clearfix
+            %label.inline
+              = f.check_box :remember_me, :class => 'ace'
+              %span.lbl Remember Me
+            %button{ :class => 'width-35 pull-right btn btn-sm btn-primary', :type => 'submit'}
+              %i.fa.fa-key.icon-key
+              Login
+        .space-4
+
+  .toolbar.clearfix
+    %div
+      = link_to '#', onclick: "show_box('forgot-box'); return false;", class:'forgot-password-link' do
+        %i.fa.fa-arrow-left.icon-arrow-left
+        I forgot my password
+    %div
+      = link_to '#', onclick: "show_box('signup-box'); return false;", class: 'user-signup-link' do
+        I want to register
+        %i.fa.fa-arrow-right.icon-arrow-right

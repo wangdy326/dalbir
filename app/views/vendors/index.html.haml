@@ -2,8 +2,53 @@
   %div.page-header.h3 Listing Vendors
   %div.row-fluid
     %div.span12
-      %div.ui-jqgrid.ui-widget.ui-widget-content.ui-corner-all#gbox_grid-table
-        %div.ui-widget-overlay.jqgrid-overlay#lui_grid-table
-        %div.loading.ui-state-default.ui-state-active#load_grid-table Loading....
-        %div.ui-widget.ui-widget-content.ui-corner-all.ui-jqdialog.jqmID1 style: "width: 300px; height: auto; z-index: 1050; overflow: hidden; top: 160px; left: 214px; display: none;"  this is me
+      %div#gbox_grid-table.ui-jqgrid.ui-widget.ui-widget-content.ui-corner-all{:style => "width: 1355px;", :dir => 'ltr' }
+        %div#lui_grid-table.ui-widget-overlay.jqgrid-overlay
+        %div#load_grid-table.loading.ui-state-default.ui-state-active{:style => "display: none;"} Loading.... 
+        %div#gview_grid-table.ui-jqgrid-view{:style => "width: 1355px;"}
+          %div.ui-state-default.ui-jqgrid-hdiv{:style => "width: 1355px;"}
+            %div.ui-jqgrid-hbox
+              %table.ui-jqgrid-htable{:style => "width:1337px;", :role => "grid", :'aria-labelledby' => "gbox_grid-table", :cellspacing => 0, :cellpadding => 0, :border => 0}
+                %thead
+                  %tr.ui-jqgrid-labels{:role => "rowheader"}
+                    %th#grid-table_id.ui-state-default.ui-th-column.ui-th-ltr{:style => "width: 118px;", :role => "columnheader"}
+                      %span.ui-jqgrid-resize.ui-jqgrid-resize-ltr{:style => "cursor: col-resize;"}
+                      %div#jqgh_grid-table_id.ui-jqgrid-sortable Vendor
+                    %th#grid-table_id.ui-state-default.ui-th-column.ui-th-ltr{:style => "width: 118px;", :role => "columnheader"}
+                      %span.ui-jqgrid-resize.ui-jqgrid-resize-ltr{:style => "cursor: col-resize;"}
+                      %div#jqgh_grid-table_id.ui-jqgrid-sortable Vendor
+                    %th#grid-table_id.ui-state-default.ui-th-column.ui-th-ltr{:style => "width: 118px;", :role => "columnheader"}
+                      %span.ui-jqgrid-resize.ui-jqgrid-resize-ltr{:style => "cursor: col-resize;"}
+                      %div#jqgh_grid-table_id.ui-jqgrid-sortable Vendor
+                    %th#grid-table_id.ui-state-default.ui-th-column.ui-th-ltr{:style => "width: 118px;", :role => "columnheader"}
+                      %span.ui-jqgrid-resize.ui-jqgrid-resize-ltr{:style => "cursor: col-resize;"}
+                      %div#jqgh_grid-table_id.ui-jqgrid-sortable Vendor
+                    %th#grid-table_id.ui-state-default.ui-th-column.ui-th-ltr{:style => "width: 118px;", :role => "columnheader"}
+                      %span.ui-jqgrid-resize.ui-jqgrid-resize-ltr{:style => "cursor: col-resize;"}
+                      %div#jqgh_grid-table_id.ui-jqgrid-sortable Vendor
+                    %th#grid-table_id.ui-state-default.ui-th-column.ui-th-ltr{:style => "width: 118px;", :role => "columnheader"}
+                      %span.ui-jqgrid-resize.ui-jqgrid-resize-ltr{:style => "cursor: col-resize;"}
+                      %div#jqgh_grid-table_id.ui-jqgrid-sortable Vendor
+                    %th#grid-table_id.ui-state-default.ui-th-column.ui-th-ltr{:style => "width: 118px;", :role => "columnheader"}
+                      %span.ui-jqgrid-resize.ui-jqgrid-resize-ltr{:style => "cursor: col-resize;"}
+                      %div#jqgh_grid-table_id.ui-jqgrid-sortable Vendor
+                    %th#grid-table_id.ui-state-default.ui-th-column.ui-th-ltr{:style => "width: 118px;", :role => "columnheader"}
+                      %span.ui-jqgrid-resize.ui-jqgrid-resize-ltr{:style => "cursor: col-resize;"}
+                      %div#jqgh_grid-table_id.ui-jqgrid-sortable Vendor
+          %div.ui-jqgrid-bdiv{:style => "height: 250px; width: 1355px;"}
+            %div{:style => "position:relative;"}
+              %div
+            %table#grid-table.ui-jqgrid-btable{:style => "width: 1337px;",  :role => "grid", :'aria-labelledby' => "gbox_grid-table", :cellspacing => 0, :cellpadding => 0, :border => 0, :'aria-multiselectable' => true, :tabindex => 0}                   
+              %tbody
+              - @vendors.each do |vendor|
+                %tr.ui-widget-content.jqgrow.ui-row-ltr{:role => "row", :id => 12, :tabindex => -1}      
+                  %td{:'aria-describedby' => 'grid-table_myac', :role => "gridcell"}
+                    %div{:style => "margin-left:8px;"}      
+                      %div#jEditButton_12.ui-pg-div.ui-inline-edit{:style => "float:left;cursor:pointer;", :'data-original-title' => "Edit Vendor"}
+                        = link_to "", edit_vendor_path(vendor), class: "ui-icon ui-icon-pencil", :onmouseover => "jQuery(this).addClass('ui-state-hover'); return false", :onmouseout => "jQuery(this).removeClass('ui-state-hover'); return false"
+                  %td{:'aria-describedby' => 'grid-table_myac', :role => "gridcell"}
+                    %div{:style => "margin-left:8px;"}      
+                      %div#jEditButton_12.ui-pg-div.ui-inline-edit{:style => "float:left;cursor:pointer;", :'data-original-title' => "Edit Vendor"}
+                        = link_to '', vendor, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "ui-icon ui-icon-trash", :onmouseover => "jQuery(this).addClass('ui-state-hover'); return false", :onmouseout => "jQuery(this).removeClass('ui-state-hover'); return false"
+                  %td{:role=>'gridcell', :'aria-describedby' => 'grid-table_id'} #{vendor.vendor_name}
 = link_to 'New Vendor', new_vendor_path

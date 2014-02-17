@@ -1,0 +1,23 @@
+.widget-body
+  .widget-main
+    %h4.header.blue.lighter.bigger
+      %i.fa.fa-key.green.icon-key
+      Retrieve Password
+    .space-6
+    %p Enter your email and to receive instructions
+    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+      %fieldset
+        - if controller.controller_name == 'passwords'
+          = devise_error_messages!
+        %label.block.clearfix
+          %span.block.input-icon.input-icon-right
+            = f.email_field :email, :autofocus => true, :class => 'form-control', :placeholder => 'Email'
+            %i.fa.fa-envelope.icon-envelope
+        .clearfix
+          %button{ :class => 'width-35 pull-right btn btn-sm btn-danger', :type => 'submit'}
+            %i.fa.fa-key.icon-key
+            Send Me!
+  .toolbar.center
+    = link_to '#', onclick: "show_box('login-box'); return false;", class: 'back-to-login-link' do
+      Back to login
+      %i.fa.fa-arrow-right.icon-arrow-right
