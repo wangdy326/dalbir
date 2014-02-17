@@ -1,0 +1,193 @@
+= form_for ([@vendor, @item]), :html => {:class => 'form-horizontal', :role => 'form'} do |f|
+  - if @item.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@item.errors.count, "error")} prohibited this item from being saved:"
+      %ul
+        - @item.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      =f.label :item_no, 'Item no'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        =f.text_field :item_no
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-3
+      = f.label :item_name, 'Item name'
+    .col-sm-9
+      #form-field-3.col-xs-10.col-sm-5
+        = f.text_field :item_name
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-5
+      = f.label :unit_price_e, 'Item price East'
+    .col-sm-9
+      #form-field-5.col-xs-10.col-sm-5
+        = f.text_field :unit_price_e
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-6
+      = f.label :unit_price_w, 'Item price West'
+    .col-sm-9
+      #form-field-6.col-xs-10.col-sm-5
+        = f.text_field :unit_price_w
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-7
+      = f.label :item_shipping_point, 'Shipping point'
+    .col-sm-9
+      #form-field-7.col-xs-10.col-sm-5
+        = f.text_field :item_shipping_point
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-8
+      = f.label :upc_code, 'UPC code'
+    .col-sm-9
+      #form-field-8.col-xs-10.col-sm-5
+        = f.text_field :upc_code
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-9
+      = f.label :pre_upc_code, 'Pre UPC name'
+    .col-sm-9
+      #form-field-9.col-xs-10.col-sm-5
+        = f.text_field :pre_upc_code
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-10
+      = f.label :item_desc, 'Item description'
+    .col-sm-9
+      #form-field-10.col-xs-10.col-sm-5
+        = f.text_area :item_desc, row: 5
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-11
+      = f.label :origin_country, 'Origin country'
+    .col-sm-9
+      #form-field-11.col-xs-10.col-sm-5
+        = f.text_field :origin_country
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-12
+      = f.label :shelf_life_from_dom, 'Shelf Life From Dom'
+    .col-sm-9
+      #form-field-12.col-xs-10.col-sm-5
+        = f.text_field :shelf_life_from_dom
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-13
+      = f.label :shelf_life_guaranteed_dom, 'Shelf Life Guaranteed Dom'
+    .col-sm-9
+      #form-field-13.col-xs-10.col-sm-5
+        = f.text_field :shelf_life_guaranteed_dom
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-14
+      = f.label :spoil_all, 'Spoil Allowance'
+    .col-sm-9
+      #form-field-14.col-xs-10.col-sm-5
+        = f.text_field :spoil_all
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-15
+      = f.label :sell_unit_dim, 'Sell Unit Dimension'
+    .col-sm-9
+      #form-field-15.col-xs-10.col-sm-5
+        = f.text_field :sell_unit_dim
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-16
+      = f.label :sell_unit_net_weight, 'Sell Unit Net Weight'
+    .col-sm-9
+      #form-field-16.col-xs-10.col-sm-5
+        = f.text_field :sell_unit_net_weight
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-17
+      = f.label :sell_unit_qty_mstr_pk, 'Sell Unit Quantity Master Pack'
+    .col-sm-9
+      #form-field-17.col-xs-10.col-sm-5
+        = f.text_field :sell_unit_qty_mstr_pk
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-18
+      = f.label :master_pk_dim, 'Master Pack Dimension'
+    .col-sm-9
+      #form-field-18.col-xs-10.col-sm-5
+        = f.text_field :master_pk_dim
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-19
+      = f.label :master_pack_cube, 'Master Pack Cube'
+    .col-sm-9
+      #form-field-19.col-xs-10.col-sm-5
+        = f.text_field :master_pack_cube
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-20
+      = f.label :master_pk_net_weight, 'Master Pack Net Weight'
+    .col-sm-9
+      #form-field-20.col-xs-10.col-sm-5
+        = f.text_field :master_pk_net_weight
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-21
+      = f.label :master_pack_gross_weight, 'Master Pack Gross Weight'
+    .col-sm-9
+      #form-field-21.col-xs-10.col-sm-5
+        = f.text_field :master_pack_gross_weight
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-22
+      = f.label :master_pack_qty_pallet, 'Master Pack Quantity Pallet'
+    .col-sm-9
+      #form-field-22.col-xs-10.col-sm-5
+        = f.text_field :master_pack_qty_pallet
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-23
+      = f.label :pallet_config, 'Pallet Config'
+    .col-sm-9
+      #form-field-23.col-xs-10.col-sm-5
+        = f.text_field :pallet_config
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-24
+      = f.label :pallet_dim, 'Pallet Dimension'
+    .col-sm-9
+      #form-field-24.col-xs-10.col-sm-5
+        = f.text_field :pallet_dim
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-25
+      = f.label :pallet, 'Pallet'
+    .col-sm-9
+      #form-field-25.col-xs-10.col-sm-5
+        = f.text_field :pallet
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-26
+      = f.label :pallet_weight, 'Pallet Weight'
+    .col-sm-9
+      #form-field-26.col-xs-10.col-sm-5
+        = f.text_field :pallet_weight
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-27
+      = f.label :pallet_xchng, 'Pallet Exchange'
+    .col-sm-9
+      #form-field-27.col-xs-10.col-sm-5
+        = f.text_field :pallet_xchng
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-28
+      = f.label :truckload_qty, 'Truckload Quaantity'
+    .col-sm-9
+      #form-field-28.col-xs-10.col-sm-5
+        = f.text_field :truckload_qty
+  .space-4
+  .clearfix.form-actions
+    .col-md-offset-3.col-md-9
+      %i.icon-ok.bigger-110
+        = f.submit 'Save'

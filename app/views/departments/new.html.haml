@@ -1,0 +1,8 @@
+.page-content
+  .page-header
+    %h1 New department
+  .row
+    .col-xs-12
+      = render :partial => 'form'
+.actions
+  = link_to 'Back', customer_departments_path(@customer)

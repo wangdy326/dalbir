@@ -1,0 +1,31 @@
+%p#notice= notice
+%p Item no: #{@item.item_no}
+%p Item name: #{@item.item_name}
+%p Item description: #{@item.item_desc}
+%p Vendor name: #{@item.vendor_id}
+%p Item shipping point: #{@item.item_shipping_point}
+%p Master pack cube: #{@item.master_pack_cube}
+%p Master pack gross weight: #{@item.master_pack_gross_weight}
+%p Master pack quantity pallet: #{@item.master_pack_qty_pallet}
+%p Master pack dimension: #{@item.master_pk_dim}
+%p Unit cost west: $#{@item.unit_price_w}
+%p Unit cost east: $#{@item.unit_price_e}
+%p Master pack net weight: #{@item.master_pk_net_weight}
+%p Item's origin country: #{@item.origin_country}
+%p Pellet: #{@item.pallet}
+%p Pellet configuration: #{@item.pallet_config}
+%p Pellet dimension: #{@item.pallet_dim}
+%p Pellet weight: #{@item.pallet_weight}
+%p Pellet exchange: #{@item.pallet_xchng}
+%p Pre UPC code: #{@item.pre_upc_code}
+%p Item sell unit dimension: #{@item.sell_unit_dim}
+%p Item sell unit net weight: #{@item.sell_unit_net_weight}
+%p Item sell unit quantity master pack: #{@item.sell_unit_qty_mstr_pk}
+%p Shelf life from dom: #{@item.shelf_life_from_dom}
+%p Shelf life guaranteed dom: #{@item.shelf_life_guaranteed_dom}
+%p Spoil allowance: #{@item.spoil_all}%
+%p Truckload quantity name: #{@item.truckload_qty}
+%p Item's UPC code: #{@item.upc_code}
+= link_to 'Edit', edit_vendor_item_path(@vendor, @item)
+\|
+= link_to 'Back', vendor_items_path(@vendor)

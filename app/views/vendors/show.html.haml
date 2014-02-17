@@ -1,0 +1,29 @@
+%p#notice= notice
+%p Vendor name: #{@vendor.vendor_name}
+%p Vendor Corporate Address: #{@vendor.corp_add}
+%p Vendor Corporate City: #{@vendor.corp_city}
+%p Vendor Corporate State: #{@vendor.corp_state}
+%p Vendor Corporate Zip: #{@vendor.corp_zip}
+%p Vendor Corporate Phone: #{@vendor.corp_phone}
+%p Vendor Corporate fax: #{@vendor.corp_fax}
+%p Vendor Remit Address: #{@vendor.remit_add}
+%p Vendor Remit city: #{@vendor.remit_city}
+%p Vendor Remit state: #{@vendor.remit_state}
+%p Vendor Remit zip: #{@vendor.remit_zip}
+%p Contact person: #{@vendor.cont_person}
+%p Sales contact person: #{@vendor.sales_cont_person}
+%p Sales contact mobile: #{@vendor.sales_cont_mob}
+%p Vendor website: #{@vendor.web_url}
+%p Extended terms: #{@vendor.extd_terms}
+%p EDI: #{@vendor.edi}
+%p Freight allowance: #{@vendor.freight_all}%
+%p Grand opening allowance: #{@vendor.grand_op_all}%
+%p Grand opening terms: #{@vendor.grand_op_terms}
+%p Cross Dock Allowance: #{@vendor.cross_dock_all}%
+%p Payment terms: #{@vendor.payment_terms}
+%p Customer service contact: #{@vendor.cust_ser_cont}
+%p Customer service fax: #{@vendor.cust_ser_fax}
+%p Customer service phone: #{@vendor.cust_ser_ph}
+= link_to 'Edit', edit_vendor_path(@vendor)
+\|
+= link_to 'Back', vendors_path

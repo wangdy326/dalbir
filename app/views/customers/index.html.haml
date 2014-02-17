@@ -1,0 +1,29 @@
+%div.page-content
+  %div.page-header.h3 Listing Customers
+  %div.row
+    %div.col-xs-12
+      %div.row
+        %div.table-responsive
+          %table#sample-table-1.table.table-striped.table-bordered.table-hover
+            %thead
+              %tr
+                %th.center Customer Name
+                %th Address
+                %th Phone
+                %th Email
+                %th Fax
+                %th 
+            %tbody    
+            - @customers.each do |customer|
+              %tr
+                %td= customer.customer_name
+                %td= customer.address + " "+ customer.city + " " + customer.state + " " + customer.zip
+                %td= customer.phone
+                %td= customer.email
+                %td= customer.fax
+                %td
+                  = link_to 'Show', customer
+                  = link_to 'Edit', edit_customer_path(customer)
+                  = link_to 'Destroy', customer, :method => :delete, :data => { :confirm => 'Are you sure?' }
+                  = link_to 'Departments', {:controller => "departments", :action => :index, :customer_id => customer.id}
+= link_to 'New Customer', new_customer_path

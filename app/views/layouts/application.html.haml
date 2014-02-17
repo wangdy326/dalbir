@@ -1,0 +1,72 @@
+!!!
+%html
+  %head
+    %title= content_for?(:title) ? yield(:title) : 'RailsApp'
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    = stylesheet_link_tag "application", media: "all"
+    /[if IE 7]
+      = stylesheet_link_tag "ie/font-awesome-ie7.min"
+
+    /[if IE 8]
+      = stylesheet_link_tag "ie/ace-ie.min"
+
+    = csrf_meta_tags
+
+  %body{class: "#{controller_name} #{controller_name}-#{action_name}"}
+    #navbar.navbar.navbar-default
+      :javascript
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+      #navbar-container.navbar-container
+        .navbar-header.pull-left
+          %a.navbar-brand{href: "#"}
+            %small
+              %i.icon-leaf
+              Eat Innovation
+        = render 'layouts/navbar_header'
+        
+    #main-container.main-container
+      :javascript
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+      .main-container-inner
+        %a#menu-toggler.menu-toggler{href: "#"}
+          %span.menu-text
+        = render 'layouts/sidebar'
+        
+        .main-content
+          = render 'layouts/breadcrumbs'
+
+          = yield
+          
+        #ace-settings-container.ace-settings-container
+          #ace-settings-btn.btn.btn-app.btn-xs.btn-warning.ace-settings-btn
+            %i.icon-cog.bigger-150
+          #ace-settings-box.ace-settings-box
+            %div
+              .pull-left
+                %select#skin-colorpicker.hide
+                  %option{"data-skin" => "default", value: "#438EB9"} #438EB9
+                  %option{"data-skin" => "skin-1", value: "#222A2D"} #222A2D
+                  %option{"data-skin" => "skin-2", value: "#C6487E"} #C6487E
+                  %option{"data-skin" => "skin-3", value: "#D0D0D0"} #D0D0D0
+              %span   Choose Skin
+            %div
+              %input#ace-settings-navbar.ace.ace-checkbox-2{type: "checkbox"}/
+              %label.lbl{for: "ace-settings-navbar"} Fixed Navbar
+            %div
+              %input#ace-settings-sidebar.ace.ace-checkbox-2{type: "checkbox"}/
+              %label.lbl{for: "ace-settings-sidebar"} Fixed Sidebar
+            %div
+              %input#ace-settings-breadcrumbs.ace.ace-checkbox-2{type: "checkbox"}/
+              %label.lbl{for: "ace-settings-breadcrumbs"} Fixed Breadcrumbs
+            %div
+              %input#ace-settings-rtl.ace.ace-checkbox-2{type: "checkbox"}/
+              %label.lbl{for: "ace-settings-rtl"} Right To Left (rtl)
+            %div
+              %input#ace-settings-add-container.ace.ace-checkbox-2{type: "checkbox"}/
+              %label.lbl{for: "ace-settings-add-container"}
+                Inside
+                %b .container
+      %a#btn-scroll-up.btn-scroll-up.btn.btn-sm.btn-inverse{href: "#"}
+        %i.icon-double-angle-up.icon-only.bigger-110
+
+    = javascript_include_tag "application"

@@ -1,0 +1,39 @@
+= form_for ([@customer, @department]), :html => {:class => 'form-horizontal', :role => 'form'} do |f|
+  - if @department.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@department.errors.count, "error")} prohibited this department from being saved:"
+      %ul
+        - @department.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :department, 'Department'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :department
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :buyer, 'Buyer'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :buyer
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :asst_buyer, 'Asst. Buyer'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :asst_buyer
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :ics, 'ICS'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :ics
+  .space-4
+  .clearfix.form-actions
+    .col-md-offset-3.col-md-9
+      %i.icon-ok.bigger-110
+        = f.submit 'Save', name: nil

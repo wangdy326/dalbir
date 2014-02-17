@@ -1,0 +1,10 @@
+#breadcrumbs.breadcrumbs
+  :javascript
+    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+  %ul.breadcrumb
+    %li
+      %i.icon-home.home-icon
+      = link_to 'Home', root_path
+    %li
+      %a{href: "#"} Other Pages
+    %li.active Blank Page

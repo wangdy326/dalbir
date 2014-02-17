@@ -1,0 +1,18 @@
+%h1 Listing items
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @items.each do |item|
+    %tr
+      %td= item.item_no
+      %td= link_to 'Show', vendor_item_path(@vendor, item)
+      %td= link_to 'Edit', edit_vendor_item_path(@vendor, item)
+      %td= link_to 'Delete', [@vendor, item], confirm: 'Are you sure?', method: :delete
+
+%br
+
+= link_to 'New Item', new_vendor_item_path(@vendor)

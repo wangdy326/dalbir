@@ -1,0 +1,12 @@
+%p#notice= notice
+%p Customer name #{@customer.customer_name}
+%p Customer Address #{@customer.address}
+%p Customer City #{@customer.city}
+%p Customer State #{@customer.state}
+%p Customer Zip #{@customer.zip}
+%p Customer Email #{@customer.email}
+%p Customer Phone #{@customer.phone}
+%p Customer Fax #{@customer.fax}
+= link_to 'Edit', edit_customer_path(@customer)
+\|
+= link_to 'Back', customers_path

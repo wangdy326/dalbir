@@ -1,0 +1,10 @@
+.page-content
+  .page-header
+    %h1 Editing vendor
+  .row
+    .col-xs-12
+      = render :partial => 'form'
+.actions
+  = link_to 'Show', @vendor
+  \|
+  = link_to 'Back', vendors_path

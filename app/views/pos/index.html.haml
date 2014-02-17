@@ -1,0 +1,30 @@
+%div.page-content
+  %div.page-header Listing POs
+  %div.row
+    %div.col-xs-12
+      %div.row
+        %div.table-responsive
+          %table#sample-table-1.table.table-striped.table-bordered.table-hover
+            %thead
+              %tr
+                %th.center PO no
+                %th Item
+                %th Quantity
+                %th Item Shipping point
+                %th PO Date Requested
+                %th Agreement No
+                %th 
+            %tbody    
+            - @pos.each do |po|
+              %tr
+                %td= po.pono
+                %td= getitemname(po.item_id)
+                %td= po.qty_string
+                %td= getfob(po.item_id)
+                %td= po.po_date
+                %td= po.agreement_id
+                %td
+                  = link_to 'Show', agreement_po_path(@agreement, po)
+                  = link_to 'Edit', edit_agreement_po_path(@agreement, po)
+                  = link_to 'Destroy', [@agreement, po], :method => :delete, :data => { :confirm => 'Are you sure?' }
+= link_to 'New Po', new_agreement_po_path(@agreement)

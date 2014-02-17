@@ -1,0 +1,7 @@
+class Po < ActiveRecord::Base
+ attr_accessible :agreement_id, :bill_to_add, :bill_to_id, :bill_to_name, :bill_to_phone, :desc, :item_
+cost, :item_desc, :item_id, :po_date, :po_date_reqstd, :po_numb, :po_status, :po_total_amount, :qty_str
+ing, :vendor_add, :vendor_name, :vendor_phone
+validates :po_numb, :uniqueness => true
+end
+

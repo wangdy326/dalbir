@@ -1,0 +1,33 @@
+= form_for ([@agreement, @po]), :html => {:class => 'form-horizontal', :role => 'form'}  do |f|
+  - if @po.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@po.errors.count, "error")} prohibited this po from being saved:"
+      %ul
+        - @po.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-1
+      =f.label :pono, 'PO No'
+    .col-sm-9
+      #form-field-1.col-xs-10.col-sm-5
+        =f.text_field :pono
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-4
+      = f.label :po_date, 'PO Date', :id => 'date-picker-1'
+    .col-sm-4
+      .col-xs-8.col-sm-11
+        .input-group
+          %input#id-date-picker-1.form-control.date-picker{"data-date-format" => "dd-mm-yyyy", type: "text", name: "po[po_date]"}
+          %span.input-group-addon
+            %i.icon-calendar.bigger-110
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-1
+      =f.label :qty_string, 'Quantity'
+    .col-sm-9
+      #form-field-1.col-xs-10.col-sm-5
+        =f.text_field :qty_string
+  .space-4
+  .actions
+    = f.submit 'Save'

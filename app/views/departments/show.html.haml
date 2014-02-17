@@ -1,0 +1,10 @@
+%p#notice= notice
+
+%p Customer nanme: #{getcusname(@department.customer_id)}
+%p Department: #{@department.department}
+%p Buyer: #{@department.buyer}
+%p Asst. Buyer: #{@department.asst_buyer}
+%p ICS: #{@department.ics}
+= link_to 'Edit', edit_customer_department_path(@customer, @department)
+\|
+= link_to 'Back', customer_departments_path(@customer)

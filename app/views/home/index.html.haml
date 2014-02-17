@@ -1,0 +1,630 @@
+.page-content
+  .page-header
+    %h1
+      Dashboard
+      %small
+        %i.icon-double-angle-right
+        overview & stats
+  .row
+    .col-xs-12
+      .alert.alert-block.alert-success
+        %button.close{"data-dismiss" => "alert", type: "button"}
+          %i.icon-remove
+        %i.icon-ok.green
+        Welcome to
+        %strong.green
+          Ace
+          %small (v1.2)
+        ,
+        the lightweight, feature-rich and easy to use admin template.
+      .row
+        .space-6
+        .col-sm-7.infobox-container
+
+          %form.survey
+            %fieldset
+              %legend Favorite Character Survey
+              .clearfix
+                %label Movie:
+                .input.movies
+                  = collection_select(:survey, :movie_id, @movies, :id, :name, {:prompt => "Select a movie"}, :class => 'form-control')
+              .clearfix
+                %label Character
+                .input.characters
+                  %select{:class => 'form-control'}
+                    %option
+
+          .infobox.infobox-green
+            .infobox-icon
+              %i.icon-comments
+            .infobox-data
+              %span.infobox-data-number 32
+              .infobox-content comments + 2 reviews
+            .stat.stat-success 8%
+          .infobox.infobox-blue
+            .infobox-icon
+              %i.icon-twitter
+            .infobox-data
+              %span.infobox-data-number 11
+              .infobox-content new followers
+            .badge.badge-success
+              +32%
+              %i.icon-arrow-up
+          .infobox.infobox-pink
+            .infobox-icon
+              %i.icon-shopping-cart
+            .infobox-data
+              %span.infobox-data-number 8
+              .infobox-content new orders
+            .stat.stat-important 4%
+          .infobox.infobox-red
+            .infobox-icon
+              %i.icon-beaker
+            .infobox-data
+              %span.infobox-data-number 7
+              .infobox-content experiments
+          .infobox.infobox-orange2
+            .infobox-chart
+              %span.sparkline{"data-values" => "196,128,202,177,154,94,100,170,224"}
+            .infobox-data
+              %span.infobox-data-number 6,251
+              .infobox-content pageviews
+            .badge.badge-success
+              7.2%
+              %i.icon-arrow-up
+          .infobox.infobox-blue2
+            .infobox-progress
+              .easy-pie-chart.percentage{"data-percent" => "42", "data-size" => "46"}
+                %span.percent> 42
+                \%
+            .infobox-data
+              %span.infobox-text traffic used
+              .infobox-content
+                %span.bigger-110 ~
+                58GB remaining
+          .space-6
+          .infobox.infobox-green.infobox-small.infobox-dark
+            .infobox-progress
+              .easy-pie-chart.percentage{"data-percent" => "61", "data-size" => "39"}
+                %span.percent> 61
+                \%
+            .infobox-data
+              .infobox-content Task
+              .infobox-content Completion
+          .infobox.infobox-blue.infobox-small.infobox-dark
+            .infobox-chart
+              %span.sparkline{"data-values" => "3,4,2,3,4,4,2,2"}
+            .infobox-data
+              .infobox-content Earnings
+              .infobox-content $32,000
+          .infobox.infobox-grey.infobox-small.infobox-dark
+            .infobox-icon
+              %i.icon-download-alt
+            .infobox-data
+              .infobox-content Downloads
+              .infobox-content 1,205
+        .vspace-sm
+        .col-sm-5
+          .widget-box
+            .widget-header.widget-header-flat.widget-header-small
+              %h5
+                %i.icon-signal
+                Traffic Sources
+              .widget-toolbar.no-border
+                %button.btn.btn-minier.btn-primary.dropdown-toggle{"data-toggle" => "dropdown"}
+                  This Week
+                  %i.icon-angle-down.icon-on-right.bigger-110
+                %ul.dropdown-menu.pull-right.dropdown-125.dropdown-lighter.dropdown-caret
+                  %li.active
+                    %a.blue{href: "#"}
+                      %i.icon-caret-right.bigger-110
+                      This Week
+                  %li
+                    %a{href: "#"}
+                      %i.icon-caret-right.bigger-110.invisible
+                      Last Week
+                  %li
+                    %a{href: "#"}
+                      %i.icon-caret-right.bigger-110.invisible
+                      This Month
+                  %li
+                    %a{href: "#"}
+                      %i.icon-caret-right.bigger-110.invisible
+                      Last Month
+            .widget-body
+              .widget-main
+                #piechart-placeholder
+                .hr.hr8.hr-double
+                .clearfix
+                  .grid3
+                    %span.grey
+                      %i.icon-facebook-sign.icon-2x.blue
+                      \  likes
+                    %h4.bigger.pull-right 1,255
+                  .grid3
+                    %span.grey
+                      %i.icon-twitter-sign.icon-2x.purple
+                      \  tweets
+                    %h4.bigger.pull-right 941
+                  .grid3
+                    %span.grey
+                      %i.icon-pinterest-sign.icon-2x.red
+                      \  pins
+                    %h4.bigger.pull-right 1,050
+      .hr.hr32.hr-dotted
+      .row
+        .col-sm-5
+          .widget-box.transparent
+            .widget-header.widget-header-flat
+              %h4.lighter
+                %i.icon-star.orange
+                Popular Domains
+              .widget-toolbar
+                %a{"data-action" => "collapse", href: "#"}
+                  %i.icon-chevron-up
+            .widget-body
+              .widget-main.no-padding
+                %table.table.table-bordered.table-striped
+                  %thead.thin-border-bottom
+                    %tr
+                      %th
+                        %i.icon-caret-right.blue
+                        name
+                      %th
+                        %i.icon-caret-right.blue
+                        price
+                      %th.hidden-480
+                        %i.icon-caret-right.blue
+                        status
+                  %tbody
+                    %tr
+                      %td internet.com
+                      %td
+                        %small
+                          %s.red $29.99
+                        %b.green $19.99
+                      %td.hidden-480
+                        %span.label.label-info.arrowed-right.arrowed-in on sale
+                    %tr
+                      %td online.com
+                      %td
+                        %small
+                          %s.red
+                        %b.green $16.45
+                      %td.hidden-480
+                        %span.label.label-success.arrowed-in.arrowed-in-right approved
+                    %tr
+                      %td newnet.com
+                      %td
+                        %small
+                          %s.red
+                        %b.green $15.00
+                      %td.hidden-480
+                        %span.label.label-danger.arrowed pending
+                    %tr
+                      %td web.com
+                      %td
+                        %small
+                          %s.red $24.99
+                        %b.green $19.95
+                      %td.hidden-480
+                        %span.label.arrowed
+                          %s out of stock
+                    %tr
+                      %td domain.com
+                      %td
+                        %small
+                          %s.red
+                        %b.green $12.00
+                      %td.hidden-480
+                        %span.label.label-warning.arrowed.arrowed-right SOLD
+        .col-sm-7
+          .widget-box.transparent
+            .widget-header.widget-header-flat
+              %h4.lighter
+                %i.icon-signal
+                Sale Stats
+              .widget-toolbar
+                %a{"data-action" => "collapse", href: "#"}
+                  %i.icon-chevron-up
+            .widget-body
+              .widget-main.padding-4
+                #sales-charts
+      .hr.hr32.hr-dotted
+      .row
+        .col-sm-6
+          #recent-box.widget-box.transparent
+            .widget-header
+              %h4.lighter.smaller
+                %i.icon-rss.orange
+                RECENT
+              .widget-toolbar.no-border
+                %ul#recent-tab.nav.nav-tabs
+                  %li.active
+                    %a{"data-toggle" => "tab", href: "#task-tab"} Tasks
+                  %li
+                    %a{"data-toggle" => "tab", href: "#member-tab"} Members
+                  %li
+                    %a{"data-toggle" => "tab", href: "#comment-tab"} Comments
+            .widget-body
+              .widget-main.padding-4
+                .tab-content.padding-8.overflow-visible
+                  #task-tab.tab-pane.active
+                    %h4.smaller.lighter.green
+                      %i.icon-list
+                      Sortable Lists
+                    %ul#tasks.item-list
+                      %li.item-orange.clearfix
+                        %label.inline
+                          %input.ace{type: "checkbox"}/
+                          %span.lbl Answering customer questions
+                        .pull-right.easy-pie-chart.percentage{"data-color" => "#ECCB71", "data-percent" => "42", "data-size" => "30"}
+                          %span.percent> 42
+                          \%
+                      %li.item-red.clearfix
+                        %label.inline
+                          %input.ace{type: "checkbox"}/
+                          %span.lbl Fixing bugs
+                        .pull-right.action-buttons
+                          %a.blue{href: "#"}
+                            %i.icon-pencil.bigger-130
+                          %span.vbar
+                          %a.red{href: "#"}
+                            %i.icon-trash.bigger-130
+                          %span.vbar
+                          %a.green{href: "#"}
+                            %i.icon-flag.bigger-130
+                      %li.item-default.clearfix
+                        %label.inline
+                          %input.ace{type: "checkbox"}/
+                          %span.lbl Adding new features
+                        .inline.pull-right.position-relative.dropdown-hover
+                          %button.btn.btn-minier.bigger.btn-primary
+                            %i.icon-cog.icon-only.bigger-120
+                          %ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.dropdown-caret.dropdown-close.pull-right
+                            %li
+                              %a.tooltip-success{"data-rel" => "tooltip", href: "#", title: "Mark as done"}
+                                %span.green
+                                  %i.icon-ok.bigger-110
+                            %li
+                              %a.tooltip-error{"data-rel" => "tooltip", href: "#", title: "Delete"}
+                                %span.red
+                                  %i.icon-trash.bigger-110
+                      %li.item-blue.clearfix
+                        %label.inline
+                          %input.ace{type: "checkbox"}/
+                          %span.lbl Upgrading scripts used in template
+                      %li.item-grey.clearfix
+                        %label.inline
+                          %input.ace{type: "checkbox"}/
+                          %span.lbl Adding new skins
+                      %li.item-green.clearfix
+                        %label.inline
+                          %input.ace{type: "checkbox"}/
+                          %span.lbl Updating server software up
+                      %li.item-pink.clearfix
+                        %label.inline
+                          %input.ace{type: "checkbox"}/
+                          %span.lbl Cleaning up
+                  #member-tab.tab-pane
+                    .clearfix
+                      .itemdiv.memberdiv
+                        .user
+                          = image_tag 'avatars/user.jpg', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Bob Doe
+                          .time
+                            %i.icon-time
+                            %span.green 20 min
+                          %div
+                            %span.label.label-warning.label-sm pending
+                            .inline.position-relative
+                              %button.btn.btn-minier.bigger.btn-yellow.btn-no-border.dropdown-toggle{"data-toggle" => "dropdown"}
+                                %i.icon-angle-down.icon-only.bigger-120
+                              %ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.pull-right.dropdown-caret.dropdown-close
+                                %li
+                                  %a.tooltip-success{"data-rel" => "tooltip", href: "#", title: "Approve"}
+                                    %span.green
+                                      %i.icon-ok.bigger-110
+                                %li
+                                  %a.tooltip-warning{"data-rel" => "tooltip", href: "#", title: "Reject"}
+                                    %span.orange
+                                      %i.icon-remove.bigger-110
+                                %li
+                                  %a.tooltip-error{"data-rel" => "tooltip", href: "#", title: "Delete"}
+                                    %span.red
+                                      %i.icon-trash.bigger-110
+                      .itemdiv.memberdiv
+                        .user
+                          = image_tag 'avatars/avatar2.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Joe Doe
+                          .time
+                            %i.icon-time
+                            %span.green 1 hour
+                          %div
+                            %span.label.label-warning.label-sm pending
+                            .inline.position-relative
+                              %button.btn.btn-minier.bigger.btn-yellow.btn-no-border.dropdown-toggle{"data-toggle" => "dropdown"}
+                                %i.icon-angle-down.icon-only.bigger-120
+                              %ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.pull-right.dropdown-caret.dropdown-close
+                                %li
+                                  %a.tooltip-success{"data-rel" => "tooltip", href: "#", title: "Approve"}
+                                    %span.green
+                                      %i.icon-ok.bigger-110
+                                %li
+                                  %a.tooltip-warning{"data-rel" => "tooltip", href: "#", title: "Reject"}
+                                    %span.orange
+                                      %i.icon-remove.bigger-110
+                                %li
+                                  %a.tooltip-error{"data-rel" => "tooltip", href: "#", title: "Delete"}
+                                    %span.red
+                                      %i.icon-trash.bigger-110
+                      .itemdiv.memberdiv
+                        .user
+                          = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Jim Doe
+                          .time
+                            %i.icon-time
+                            %span.green 2 hour
+                          %div
+                            %span.label.label-warning.label-sm pending
+                            .inline.position-relative
+                              %button.btn.btn-minier.bigger.btn-yellow.btn-no-border.dropdown-toggle{"data-toggle" => "dropdown"}
+                                %i.icon-angle-down.icon-only.bigger-120
+                              %ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.pull-right.dropdown-caret.dropdown-close
+                                %li
+                                  %a.tooltip-success{"data-rel" => "tooltip", href: "#", title: "Approve"}
+                                    %span.green
+                                      %i.icon-ok.bigger-110
+                                %li
+                                  %a.tooltip-warning{"data-rel" => "tooltip", href: "#", title: "Reject"}
+                                    %span.orange
+                                      %i.icon-remove.bigger-110
+                                %li
+                                  %a.tooltip-error{"data-rel" => "tooltip", href: "#", title: "Delete"}
+                                    %span.red
+                                      %i.icon-trash.bigger-110
+                      .itemdiv.memberdiv
+                        .user
+                          = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Alex Doe
+                          .time
+                            %i.icon-time
+                            %span.green 3 hour
+                          %div
+                            %span.label.label-danger.label-sm blocked
+                      .itemdiv.memberdiv
+                        .user
+                          = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Bob Doe
+                          .time
+                            %i.icon-time
+                            %span.green 6 hour
+                          %div
+                            %span.label.label-success.label-sm.arrowed-in approved
+                      .itemdiv.memberdiv
+                        .user
+                          = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Susan
+                          .time
+                            %i.icon-time
+                            %span.green yesterday
+                          %div
+                            %span.label.label-success.label-sm.arrowed-in approved
+                      .itemdiv.memberdiv
+                        .user
+                          = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Phil Doe
+                          .time
+                            %i.icon-time
+                            %span.green 2 days ago
+                          %div
+                            %span.label.label-info.label-sm.arrowed-in.arrowed-in-right online
+                      .itemdiv.memberdiv
+                        .user
+                          = image_tag 'avatars/avatar1.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Alexa Doe
+                          .time
+                            %i.icon-time
+                            %span.green 3 days ago
+                          %div
+                            %span.label.label-success.label-sm.arrowed-in approved
+                    .center
+                      %i.icon-group.icon-2x.green
+                      \
+                      %a{href: "#"}
+                        See all members
+                        %i.icon-arrow-right
+                    .hr.hr-double.hr8
+                  
+                  #comment-tab.tab-pane
+                    .comments
+                      .itemdiv.commentdiv
+                        .user
+                          = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Bob Doe
+                          .time
+                            %i.icon-time
+                            %span.green 6 min
+                          .text
+                            %i.icon-quote-left
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis …
+                        .tools
+                          .inline.position-relative
+                            %button.btn.btn-minier.bigger.btn-yellow.dropdown-toggle{"data-toggle" => "dropdown"}
+                              %i.icon-angle-down.icon-only.bigger-120
+                            %ul.dropdown-menu.dropdown-only-icon.dropdown-yellow.pull-right.dropdown-caret.dropdown-close
+                              %li
+                                %a.tooltip-success{"data-rel" => "tooltip", href: "#", title: "Approve"}
+                                  %span.green
+                                    %i.icon-ok.bigger-110
+                              %li
+                                %a.tooltip-warning{"data-rel" => "tooltip", href: "#", title: "Reject"}
+                                  %span.orange
+                                    %i.icon-remove.bigger-110
+                              %li
+                                %a.tooltip-error{"data-rel" => "tooltip", href: "#", title: "Delete"}
+                                  %span.red
+                                    %i.icon-trash.bigger-110
+                      .itemdiv.commentdiv
+                        .user
+                          = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Jennifer
+                          .time
+                            %i.icon-time
+                            %span.blue 15 min
+                          .text
+                            %i.icon-quote-left
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis …
+                        .tools
+                          .action-buttons.bigger-125
+                            %a{href: "#"}
+                              %i.icon-pencil.blue
+                            %a{href: "#"}
+                              %i.icon-trash.red
+                      .itemdiv.commentdiv
+                        .user
+                          = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Joe
+                          .time
+                            %i.icon-time
+                            %span.orange 22 min
+                          .text
+                            %i.icon-quote-left
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis …
+                        .tools
+                          .action-buttons.bigger-125
+                            %a{href: "#"}
+                              %i.icon-pencil.blue
+                            %a{href: "#"}
+                              %i.icon-trash.red
+                      .itemdiv.commentdiv
+                        .user
+                          = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                        .body
+                          .name
+                            %a{href: "#"} Rita
+                          .time
+                            %i.icon-time
+                            %span.red 50 min
+                          .text
+                            %i.icon-quote-left
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis …
+                        .tools
+                          .action-buttons.bigger-125
+                            %a{href: "#"}
+                              %i.icon-pencil.blue
+                            %a{href: "#"}
+                              %i.icon-trash.red
+                    .hr.hr8
+                    .center
+                      %i.icon-comments-alt.icon-2x.green
+                      \
+                      %a{href: "#"}
+                        See all comments
+                        %i.icon-arrow-right
+                    .hr.hr-double.hr8
+        .col-sm-6
+          .widget-box
+            .widget-header
+              %h4.lighter.smaller
+                %i.icon-comment.blue
+                Conversation
+            .widget-body
+              .widget-main.no-padding
+                .dialogs
+                  .itemdiv.dialogdiv
+                    .user
+                      = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                    .body
+                      .time
+                        %i.icon-time
+                        %span.green 4 sec
+                      .name
+                        %a{href: "#"} Alexa
+                      .text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
+                      .tools
+                        %a.btn.btn-minier.btn-info{href: "#"}
+                          %i.icon-only.icon-share-alt
+                  .itemdiv.dialogdiv
+                    .user
+                      = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                    .body
+                      .time
+                        %i.icon-time
+                        %span.blue 38 sec
+                      .name
+                        %a{href: "#"} John
+                      .text Raw denim you probably haven't heard of them jean shorts Austin.
+                      .tools
+                        %a.btn.btn-minier.btn-info{href: "#"}
+                          %i.icon-only.icon-share-alt
+                  .itemdiv.dialogdiv
+                    .user
+                      = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                    .body
+                      .time
+                        %i.icon-time
+                        %span.orange 2 min
+                      .name
+                        %a{href: "#"} Bob
+                        %span.label.label-info.arrowed.arrowed-in-right admin
+                      .text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
+                      .tools
+                        %a.btn.btn-minier.btn-info{href: "#"}
+                          %i.icon-only.icon-share-alt
+                  .itemdiv.dialogdiv
+                    .user
+                      = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                    .body
+                      .time
+                        %i.icon-time
+                        %span.grey 3 min
+                      .name
+                        %a{href: "#"} Jim
+                      .text Raw denim you probably haven't heard of them jean shorts Austin.
+                      .tools
+                        %a.btn.btn-minier.btn-info{href: "#"}
+                          %i.icon-only.icon-share-alt
+                  .itemdiv.dialogdiv
+                    .user
+                      = image_tag 'avatars/avatar.png', :alt => "Alex's Avatar"
+                    .body
+                      .time
+                        %i.icon-time
+                        %span.green 4 min
+                      .name
+                        %a{href: "#"} Alexa
+                      .text Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      .tools
+                        %a.btn.btn-minier.btn-info{href: "#"}
+                          %i.icon-only.icon-share-alt
+                %form
+                  .form-actions
+                    .input-group
+                      %input.form-control{name: "message", placeholder: "Type your message here ...", type: "text"}/
+                      %span.input-group-btn
+                        %button.btn.btn-sm.btn-info.no-radius{type: "button"}
+                          %i.icon-share-alt
+                          Send

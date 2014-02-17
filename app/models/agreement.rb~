@@ -1,0 +1,11 @@
+class Agreement < ActiveRecord::Base
+paginates_per 1  
+
+attr_accessible :agreement_customer, :case_cost_w, :agreement_no, :agreement_customer_dept, :agreement_date, :agreement_name, :agreement_status, :agreement_vendor, :case_cost, :commitment_string, :cross_dock_all, :fob_point, :item, :min_com, :min_per_order, :mktg_all, :pricing_option, :unit_cost
+
+belongs_to :customers
+belongs_to :vendors
+
+validate :agreement_customer, presence: true
+end
+

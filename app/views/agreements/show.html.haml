@@ -1,0 +1,21 @@
+%p#notice= notice
+%p Agreement no: #{@agreement.agreementno}
+%p Agreement Date: #{@agreement.agreementdate}
+%p Customer: getcus(agreement.agreement_customer)
+%p Customer's Department: getdept(agreement.department)
+%p Vendor: getven(agreement.agreement_vendor)
+%p Agreed Item: getitem(agreement.item)
+%p Case Cost W: #{@agreement.case_cost_w}
+%p Case Cost E: #{@agreement.case_cost}
+%p Agreement Status: #{@agreement.agreement_status}
+%p Total Commitment: #{@agreement.commitment_string}
+%p Cross Dock Allowance: #{@agreement.cross_dock_all}
+%p FOB Point: #{@agreement.fob_point}
+%p Minimum Commitment: #{@agreement.min_com}
+%p Minimum Per Order: #{@agreement.min_per_order}
+%p Marketing Allowance: #{@agreement.mktg_all}
+%p Pricing Options: #{@agreement.pricing_option}
+%p Purchased Quantity: #{@agreement.purchasedqty}
+= link_to 'Edit', edit_agreement_path(@agreement)
+\|
+= link_to 'Back', agreements_path

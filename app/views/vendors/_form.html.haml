@@ -1,0 +1,200 @@
+=form_for @vendor, :html => {:class => 'form-horizontal', :role => 'form'} do |f|
+  - if false
+    #error_explanation
+      %h2= "#{pluralize(@vendor.errors.count, "error")} prohibited this vendor from being saved:"
+      %ul
+      - @vendor.errors.full_messages.each do |msg|
+        %li= msg
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-1
+      =f.label :vendor_name, 'Vendor'
+    .col-sm-9
+      #form-field-1.col-xs-10.col-sm-5
+        =f.text_field :vendor_name
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :corp_add, 'Corporate address'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_area :corp_add, :rows => 5
+  .space-4 
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-6
+      = f.label :corp_city, 'City'
+    .col-sm-9
+      #form-field-6.col-xs-10.col-sm-5
+        = f.text_field :corp_city
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-3
+      = f.label :corp_state, 'State', class: 'span4'
+    .col-sm-9
+      #form-field-3.col-xs-10.col-sm-5
+        = f.select :corp_state, options_from_collection_for_select(venstate, :id, :stcode)
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-4
+      = f.label :corp_zip, 'Zip'
+    .col-sm-9
+      #form-field-3.col-xs-10.col-sm-5
+        =f.text_field :corp_zip
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-5
+      = f.label :corp_email, 'Email'
+    .col-sm-9
+      #form-field-5.col-xs-10.col-sm-5
+        = f.email_field :corp_email
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-6
+      = f.label :corp_fax, 'Fax'
+    .col-sm-9
+      #form-field-6.col-xs-10.col-sm-5
+        = f.text_field :corp_fax
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-7
+      = f.label :corp_phone, 'Phone'
+    .col-sm-9
+      #form-field-7.col-xs-10.col-sm-5
+        = f.text_field :corp_phone
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-8
+      = f.label :remit_add, 'Remit address'
+    .col-sm-9
+      #form-field-8.col-xs-10.col-sm-5
+        = f.text_area :remit_add, :rows => 5
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-10
+      = f.label :remit_city, 'Remit city'
+    .col-sm-9
+      #form-field-10.col-xs-10.col-sm-5
+        = f.text_field :remit_city
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-9
+      = f.label :remit_state, 'State'
+    .col-sm-9
+      #form-field-9.col-xs-10.col-sm-5
+        = f.select :remit_state, options_from_collection_for_select(venstate, :id, :stcode)
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-10
+      = f.label :remit_zip, 'Zip'
+    .col-sm-9
+      #form-field-10.col-xs-10.col-sm-5
+        = f.text_field :remit_zip
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-11
+      = f.label :cont_person, 'Contact person'
+    .col-sm-9
+      #form-field-11.col-xs-10.col-sm-5
+        = f.text_field :cont_person
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-12
+      = f.label :sales_cont_person, 'Sales contact person'
+    .col-sm-9
+      #form-field-12.col-xs-10.col-sm-5
+        = f.text_field :sales_cont_person
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-13
+      = f.label :sales_cont_phone, 'Sales contact phone'
+    .col-sm-9
+      #form-field-13.col-xs-10.col-sm-5
+        = f.text_field :sales_cont_phone
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-14
+      = f.label :sales_cont_mob, 'Sales contact mobile'
+    .col-sm-9
+      #form-field-14.col-xs-10.col-sm-5
+        = f.text_field :sales_cont_mob 
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-15
+      = f.label :web_url, 'Website'
+    .col-sm-9
+      #form-field-15.col-xs-10.col-sm-5
+        = f.url_field :web_url
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-16
+      = f.label :payment_terms, 'Payment terms'
+    .col-sm-9
+      #form-field-16.col-xs-10.col-sm-5
+        = f.text_field :payment_terms
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-17
+      = f.label :extd_terms, 'Extended Terms'
+    .col-sm-9
+      #form-field-17.col-xs-10.col-sm-5
+        = f.text_field :extd_terms
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-18
+      = f.label :grand_op_terms, 'Grand OP terms'
+    .col-sm-9
+      #form-field-18.col-xs-10.col-sm-5
+        = f.text_field :grand_op_terms
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-19
+      = f.label :cross_dock_all, 'Cross dock allowance'
+    .col-sm-9
+      #form-field-19.col-xs-10.col-sm-5
+        = f.text_field :cross_dock_all
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-20
+      = f.label :freight_all, 'Freight Allowance'
+    .col-sm-9
+      #form-field-20.col-xs-10.col-sm-5
+        = f.text_field :freight_all
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-21
+      = f.label :grand_op_all, 'Grand OP Allowance'
+    .col-sm-9
+      #form-field-21.col-xs-10.col-sm-5
+        = f.text_field :grand_op_all
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-22
+      = f.label :cust_ser_cont, 'Customer Service Contact'
+    .col-sm-9
+      #form-field-22.col-xs-10.col-sm-5
+        = f.text_field :cust_ser_cont
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-23
+      = f.label :cust_ser_ph, 'Customer Service Phone'
+    .col-sm-9
+      #form-field-23.col-xs-10.col-sm-5
+        = f.text_field :cust_ser_ph
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-24
+      = f.label :cust_ser_fax, 'Customer Service Fax'
+    .col-sm-9
+      #form-field-24.col-xs-10.col-sm-5
+        = f.text_field :cust_ser_fax
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-25
+      = f.label :edi, 'EDI'
+    .col-sm-9
+      #form-field-25.col-xs-10.col-sm-5
+        = f.text_field :edi
+  .space-4
+  .clearfix.form-actions
+    .col-md-offset-3.col-md-9
+      %i.icon-ok.bigger-110
+        = f.submit 'Save', name: nil 

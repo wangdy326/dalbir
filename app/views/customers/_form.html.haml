@@ -1,0 +1,67 @@
+= form_for @customer, :html => {:class => 'form-horizontal', :role => 'form'} do |f|
+  - if @customer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@customer.errors.count, "error")} prohibited this customer from being saved:"
+      %ul
+        - @customer.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :customer_name, 'Customer name'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :customer_name
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :address, 'Address'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_area :address, rows: 5
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :city, 'City'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :city
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :state, 'State'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :state
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :zip, 'Zip'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :zip
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :email, 'Email'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :email
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :fax, 'Fax'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :fax
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :phone, 'Phone'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :phone
+  .space-4
+  .clearfix.form-actions
+    .col-md-offset-3.col-md-9
+      %i.icon-ok.bigger-110
+        = f.submit 'Save', name: nil 

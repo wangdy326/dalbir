@@ -1,0 +1,10 @@
+class Customer < ActiveRecord::Base
+has_many :departments
+
+has_many :agreements, :foreign_key => :agreement_customer
+has_many :vendors, :through => :agreements
+ attr_accessible :address, :asst_buyer, :buyer, :city, :customer_name, :deptt, :email, :fax, :ics, :pho
+ne, :state, :zip
+
+end
+

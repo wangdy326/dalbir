@@ -1,0 +1,16 @@
+%p#notice= notice
+%p PO no: #{@po.pono}
+%p Agreement No: #{@po.agreement_id}
+%p Customer: #{getcustname(@po.bill_to_id)}
+%p Customer Address: #{getcustadd(@po.bill_to_id)}
+%p Vendor: #{getvenname(@po.vendor_name)}
+%p Vendor Address: #{getvenadd(@po.vendor_name)}
+%p Item: #{getitemname(@po.item_id)}
+%p Item Shipping Point: #{getfob(@po.item_id)}
+%p PO Date: #{@po.po_date}
+%p PO Quantity: #{@po.qty_string}
+%p Item Price W: #{getprice(@po.agreement_id)}
+%p Item Price E: #{getpricee(@po.agreement_id)}
+= link_to 'Edit', edit_agreement_po_path(@agreement, @po)
+\|
+= link_to 'Back', agreement_pos_path(@agreement)

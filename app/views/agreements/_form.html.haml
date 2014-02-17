@@ -1,0 +1,128 @@
+= form_for @agreement, :html => {:class => 'form-horizontal', :role => 'form'} do |f|
+  - if @agreement.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@agreement.errors.count, "error")} prohibited this agreement from being saved:"
+      %ul
+        - @agreement.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :agreementno, 'Agreement no'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :agreementno
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-4
+      = f.label :agreementdate, 'Agreement Date', :id => 'date-picker-1'
+    .col-sm-4
+      .col-xs-8.col-sm-11
+        .input-group
+          %input#id-date-picker-1.form-control.date-picker{"data-date-format" => "dd-mm-yyyy", type: "text", name: "agreement[agreementdate]"}
+          %span.input-group-addon
+            %i.icon-calendar.bigger-110
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :agreement_customer, 'Agreement customer'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5.input.movies
+        = f.select :agreement_customer, options_from_collection_for_select(Customer.all, :id, :customer_name), prompt: true
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :agreement_customer_dept, 'Customer department'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5.input.characters
+        %select{:name => 'agreement[department]', :class => 'form-control'}
+          %option
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :agreement_vendor, 'Agreement Vendor'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5.input.vend
+        = f.select :agreement_vendor, options_from_collection_for_select(Vendor.all, :id, :vendor_name), prompt: true
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :item, 'Item'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5.input.venit
+        %select{:class => 'form-control', :name => 'agreement[item]'}
+          %option
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :case_cost, 'Case Cost East'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :case_cost
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :case_cost_w, 'Case Cost West'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :case_cost_w
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :pricing_option, 'Pricing Option'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :pricing_option
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :fob_point, 'FOB Point'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :fob_point
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :commitment_string, 'Commitment'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :commitment_string
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :min_com, 'Minimum Com'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :min_com
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :min_per_order, 'Minimum per order'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :min_per_order
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :unit_cost, 'Unit cost'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :unit_cost
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :mktg_all, 'Marketing Allowance'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :mktg_all
+  .space-4
+  .form-group
+    %label.col-sm-3.control-label.no-padding-right.form-field-2
+      = f.label :cross_dock_all, 'Cross Dock Allowance'
+    .col-sm-9
+      #form-field-2.col-xs-10.col-sm-5
+        = f.text_field :cross_dock_all
+  .space-4
+  .clearfix.form-actions
+    .col-md-offset-3.col-md-9
+      %i.icon-ok.bigger-110
+        = f.submit 'Save', name: nil 
