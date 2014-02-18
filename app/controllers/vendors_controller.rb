@@ -3,16 +3,12 @@ class VendorsController < ApplicationController
   # GET /vendors.json
   def index
     @vendors = Vendor.all
-
-   
   end
 
   def items
-  
    @vendor = Vendor.find(params[:vendor_id])
  # 	raise @vendor.inspect
    @items = @vendor.items.all
-
   end
   # GET /vendors/1
   # GET /vendors/1.json
@@ -75,5 +71,13 @@ class VendorsController < ApplicationController
       format.html { redirect_to vendors_path }
       format.json { head :no_content }
     end
+  end
+
+  def jqedit
+    a= 'a'
+    b=a
+    respond_to do |format|
+    format.json { head :no_content }
+      end
   end
 end

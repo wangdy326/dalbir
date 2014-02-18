@@ -6,9 +6,13 @@
     = stylesheet_link_tag "application", media: "all"
     /[if IE 7]
       = stylesheet_link_tag "ie/font-awesome-ie7.min"
-
+    = yield :page_stylesheets
+    = stylesheet_link_tag "ace-fonts", "ace.min", "ace-rtl.min", "ace-skins.min"
     /[if IE 8]
       = stylesheet_link_tag "ie/ace-ie.min"
+    = javascript_include_tag "ace-extra.min"
+    /[if IE 9]
+      = javascript_include_tag "ie/html5shiv", "ie/respond.min"
 
     = csrf_meta_tags
 
@@ -20,7 +24,7 @@
         .navbar-header.pull-left
           %a.navbar-brand{href: "#"}
             %small
-              %i.icon-leaf
+              %i.fa.fa-leaf
               Eat Innovation
         = render 'layouts/navbar_header'
         
@@ -39,7 +43,7 @@
           
         #ace-settings-container.ace-settings-container
           #ace-settings-btn.btn.btn-app.btn-xs.btn-warning.ace-settings-btn
-            %i.icon-cog.bigger-150
+            %i.fa.fa-cog.bigger-150
           #ace-settings-box.ace-settings-box
             %div
               .pull-left
@@ -50,23 +54,37 @@
                   %option{"data-skin" => "skin-3", value: "#D0D0D0"} #D0D0D0
               %span   Choose Skin
             %div
-              %input#ace-settings-navbar.ace.ace-checkbox-2{type: "checkbox"}/
+              %input#ace-settings-navbar.ace.ace-checkbox-2{type: "checkbox"}
               %label.lbl{for: "ace-settings-navbar"} Fixed Navbar
             %div
-              %input#ace-settings-sidebar.ace.ace-checkbox-2{type: "checkbox"}/
+              %input#ace-settings-sidebar.ace.ace-checkbox-2{type: "checkbox"}
               %label.lbl{for: "ace-settings-sidebar"} Fixed Sidebar
             %div
-              %input#ace-settings-breadcrumbs.ace.ace-checkbox-2{type: "checkbox"}/
+              %input#ace-settings-breadcrumbs.ace.ace-checkbox-2{type: "checkbox"}
               %label.lbl{for: "ace-settings-breadcrumbs"} Fixed Breadcrumbs
             %div
-              %input#ace-settings-rtl.ace.ace-checkbox-2{type: "checkbox"}/
+              %input#ace-settings-rtl.ace.ace-checkbox-2{type: "checkbox"}
               %label.lbl{for: "ace-settings-rtl"} Right To Left (rtl)
             %div
-              %input#ace-settings-add-container.ace.ace-checkbox-2{type: "checkbox"}/
+              %input#ace-settings-add-container.ace.ace-checkbox-2{type: "checkbox"}
               %label.lbl{for: "ace-settings-add-container"}
                 Inside
                 %b .container
-      %a#btn-scroll-up.btn-scroll-up.btn.btn-sm.btn-inverse{href: "#"}
-        %i.icon-double-angle-up.icon-only.bigger-110
-
-    = javascript_include_tag "application"
+      = link_to '#', id: 'btn-scroll-up', class: 'btn-scroll-up btn btn-sm btn-inverse'  do
+        %i.fa.fa-angle-double-up.icon-only.bigger-110
+    :plain
+      <!--[if !IE]> <!-->
+    :javascript
+      window.jQuery || document.write("#{escape_javascript javascript_include_tag 'jquery-2.0.3.min'}");
+    /<![endif]
+    :plain
+      <!--[if IE] -->
+    :javascript
+      window.jQuery || document.write("#{escape_javascript javascript_include_tag 'jquery-1.10.2.min'}");
+    /<![endif]
+    :javascript
+      if("ontouchend" in document) document.write("#{escape_javascript javascript_include_tag 'jquery.mobile.custom.min'}");
+    = javascript_include_tag 'application'
+    = yield :page_specific_scripts
+    = javascript_include_tag 'ace-elements.min', 'ace.min'
+    = yield :inline_page_scripts
