@@ -74,8 +74,18 @@ class VendorsController < ApplicationController
   end
 
   def jqedit
-    a= 'a'
-    b=a
+    if params[:oper]
+      case params[:oper]
+        when 'edit'
+          a = :a
+        when 'add'
+          vendor = Vendor.new(params.except(:oper,:id,:controller,:action))
+          vendor.save!
+          a=:a
+        when 'del'
+          a = :a
+      end
+    end
     respond_to do |format|
     format.json { head :no_content }
       end
