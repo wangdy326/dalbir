@@ -4,13 +4,13 @@
   #sidebar-shortcuts.sidebar-shortcuts
     #sidebar-shortcuts-large.sidebar-shortcuts-large
       %button.btn.btn-success
-        %i.icon-signal
+        %i.fa.fa-signal
       %button.btn.btn-info
-        %i.icon-pencil
+        %i.fa.fa-pencil
       %button.btn.btn-warning
-        %i.icon-group
+        %i.fa.fa-group
       %button.btn.btn-danger
-        %i.icon-cogs
+        %i.fa.fa-cogs
     #sidebar-shortcuts-mini.sidebar-shortcuts-mini
       %span.btn.btn-success
       %span.btn.btn-info
@@ -18,22 +18,28 @@
       %span.btn.btn-danger
   / #sidebar-shortcuts
   %ul.nav.nav-list
-    %li
-      %a.i.icon-dashboard
+    %li{:class => controller.controller_name == 'home' ? 'active' : ''}
+      = link_to root_path do
+        %i.fa.fa-dashboard
         %span.menu-text
-          =link_to 'Dashboard', root_path
-    %li
-      %a.i.icon-dashboard
+          Dashboard
+    %li{:class => controller.controller_name == 'agreements' ? 'active' : ''}
+      = link_to agreements_path do
+        %i.fa.fa-dashboard
         %span.menu-text
-          =link_to 'Agreements', agreements_path
-      %a.i.icon-dashboard
+          Agreements
+    %li{:class => controller.controller_name == 'vendors' ? 'active' : ''}
+      = link_to vendors_path do
+        %i.fa.fa-dashboard
         %span.menu-text
-          =link_to 'Vendors', vendors_path
-      %a.i.icon-dashboard
+          Vendors
+    %li{:class => controller.controller_name == 'customers' ? 'active' : ''}
+      = link_to customers_path do
+        %i.fa.fa-dashboard
         %span.menu-text
-          =link_to 'Customers', customers_path
+          Customers
   / /.nav-list
   #sidebar-collapse.sidebar-collapse
-    %i.icon-double-angle-left{"data-icon1" => "icon-double-angle-left", "data-icon2" => "icon-double-angle-right"}
+    %i.fa.fa-double-angle-left{"data-icon1" => "fa-double-angle-left", "data-icon2" => "fa-double-angle-right"}
   :javascript
     try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}

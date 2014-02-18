@@ -21,6 +21,7 @@ resources :customers do
 
 	resources :departments
 end
+ post 'vendors/jqedit' => 'vendors#jqedit'
 
  get 'cus_departments' => 'agreements#cus_departments'
 

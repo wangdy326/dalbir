@@ -10,11 +10,11 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
-//= require ace-extra.min
-//= require jquery-2.0.3.min
-//= require_directory .
+//= require bootstrap.min.js
+//= require bootstrap-datepicker.min.js
+//= require bootstrap-timepicker.min.js
+//= require typeahead-bs2.min.js
+//= require chosen.jquery.min.js
 
 jQuery(document).ready(function(){
   $(".chosen-select").chosen();
@@ -23,4 +23,4 @@ jQuery(document).ready(function(){
         $('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
 					$(this).prev().focus();
 				});
-})
+});
