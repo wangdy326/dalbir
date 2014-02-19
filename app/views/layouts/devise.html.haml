@@ -9,7 +9,6 @@
 
     /[if IE 8]
       = stylesheet_link_tag "ie/ace-ie.min"
-
     = csrf_meta_tags
 
   %body.login-layout
@@ -27,6 +26,18 @@
               .space-6
               .position-relative
                 =yield
+    :plain
+      <!--[if !IE]> <!-->
+    :javascript
+      window.jQuery || document.write("#{escape_javascript javascript_include_tag 'jquery-2.0.3.min'}");
+    /<![endif]
+    :plain
+      <!--[if IE] -->
+    :javascript
+      window.jQuery || document.write("#{escape_javascript javascript_include_tag 'jquery-1.10.2.min'}");
+    /<![endif]
+    :javascript
+      if("ontouchend" in document) document.write("#{escape_javascript javascript_include_tag 'jquery.mobile.custom.min'}");
     = javascript_include_tag "application"
     :javascript
       function show_box(id) {

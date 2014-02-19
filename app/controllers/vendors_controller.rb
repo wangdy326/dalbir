@@ -77,17 +77,21 @@ class VendorsController < ApplicationController
     if params[:oper]
       case params[:oper]
         when 'edit'
-          a = :a
+          vendor = Vendor.find(params[:id])
+          vendor.attributes = params.except(:oper,:id,:controller,:action)
+          vendor.save!
         when 'add'
           vendor = Vendor.new(params.except(:oper,:id,:controller,:action))
           vendor.save!
-          a=:a
         when 'del'
-          a = :a
+          if params[:id]
+            ids = params[:id].split ','
+            Vendor.destroy ids
+          end
       end
     end
     respond_to do |format|
-    format.json { head :no_content }
-      end
+      format.js {}
+    end
   end
 end
