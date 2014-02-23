@@ -3,7 +3,11 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customers = Customer.all
-
+    @states = ""
+    State.all.each do |state|
+      @states += state.state + ":" + state.stcode + ";" 
+    end
+    @states = @states[0..@states.length - 2]
   end
 
   # GET /customers/1
@@ -67,6 +71,28 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to customers_url }
       format.json { head :no_content }
+    end
+  end
+
+  def jqedit
+    if params[:oper]
+      case params[:oper]
+        when 'edit'
+          customer = Customer.find(params[:id])
+          customer.attributes = params.except(:oper,:id,:controller,:action)
+          customer.save!
+        when 'add'
+          customer = Customer.new(params.except(:oper,:id,:controller,:action))
+          customer.save!
+        when 'del'
+          if params[:id]
+            ids = params[:id].split ','
+            Customer.destroy ids
+          end
+      end
+    end
+    respond_to do |format|
+      format.js {}
     end
   end
 end

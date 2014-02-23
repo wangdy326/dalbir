@@ -1,12 +1,11 @@
 class PosController < ApplicationController
-before_filter :loadagr
+before_filter :loadagr, :except => :jqedit
 
 
   # GET /pos
   # GET /pos.json
   def index
     @pos = @agreement.pos.all
-
   end
 
   # GET /pos/1
@@ -79,6 +78,29 @@ before_filter :loadagr
     respond_to do |format|
     
       format.html { redirect_to agreement_pos_path(@agreement) }
+    end
+  end
+
+  def jqedit
+    @agreement = Agreement.find(params[:id])
+    if params[:oper]
+      case params[:oper]
+        when 'edit'
+          po = @agreement.pos.find(params[:id])
+          po.attributes = params.except(:oper,:id,:controller,:action)
+          po.save!
+        when 'add'
+          po = @agreement.pos.create!(params.except(:oper,:id,:controller,:action))
+          po.save!
+        when 'del'
+          if params[:poid]
+            @po = @agreement.pos.find(params[:poid])
+            @po.destroy
+          end
+      end
+    end
+    respond_to do |format|
+      format.js {}
     end
   end
   

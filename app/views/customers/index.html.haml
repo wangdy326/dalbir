@@ -1,29 +1,23 @@
+
+= content_for :page_specific_scripts do
+  = javascript_include_tag "customers"
+  :javascript
+    var grid_data = #{@customers.to_json};
+    var state_list = "#{@states.to_s}";
+    jQuery(function($) {
+      var grid_selector = "#customers-table";
+      var pager_selector = "#customers-pager";
+
+      jQuery(grid_selector).jqGrid({
+        data: grid_data
+      });
+    });
 %div.page-content
-  %div.page-header.h3 Listing Customers
-  %div.row
-    %div.col-xs-12
-      %div.row
-        %div.table-responsive
-          %table#sample-table-1.table.table-striped.table-bordered.table-hover
-            %thead
-              %tr
-                %th.center Customer Name
-                %th Address
-                %th Phone
-                %th Email
-                %th Fax
-                %th 
-            %tbody    
-            - @customers.each do |customer|
-              %tr
-                %td= customer.customer_name
-                %td= customer.address + " "+ customer.city + " " + customer.state + " " + customer.zip
-                %td= customer.phone
-                %td= customer.email
-                %td= customer.fax
-                %td
-                  = link_to 'Show', customer
-                  = link_to 'Edit', edit_customer_path(customer)
-                  = link_to 'Destroy', customer, :method => :delete, :data => { :confirm => 'Are you sure?' }
-                  = link_to 'Departments', {:controller => "departments", :action => :index, :customer_id => customer.id}
+  %div.page-header
+    %h1 Listing Customers
+  .row
+    .col-xs-12
+      %table#customers-table
+        #customers-pager
+
 = link_to 'New Customer', new_customer_path

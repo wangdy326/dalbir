@@ -1,32 +1,21 @@
+
+= content_for :page_specific_scripts do
+  = javascript_include_tag "items"
+  :javascript
+    var $path_base = "/vendors/" + #{@vendor._id} + "/";
+    var grid_data = #{@items.to_json};
+    jQuery(function($) {
+      var grid_selector = "#items-table";
+      var pager_selector = "#items-pager";
+
+      jQuery(grid_selector).jqGrid({
+        data: grid_data
+      });
+    });
 %div.page-content
-  %div.page-header Listing items
-  %div.row
-    %div.col-xs-12
-      %div.row
-        %div.table-responsive
-          %table#sample-table-1.table.table-striped.table-bordered.table-hover
-            %thead
-              %tr
-                %th.center Item no
-                %th Item Name
-                %th Unit Price W
-                %th Unit Price E
-                %th Spoil Allowance
-                %th Item Shipping point
-                %th UPC code
-                %th 
-            %tbody    
-            - @items.each do |item|
-              %tr
-                %td= item.item_no
-                %td= item.item_name
-                %td= item.unit_price_w
-                %td= item.unit_price_e
-                %td= item.spoil_all
-                %td= item.item_shipping_point
-                %td= item.upc_code
-                %td
-                  = link_to 'Show', vendor_item_path(@vendor, item)
-                  = link_to 'Edit', edit_vendor_item_path(@vendor, item)
-                  = link_to 'Delete', [@vendor, item], confirm: 'Are you sure?', method: :delete
-= link_to 'New Item', new_vendor_item_path(@vendor)
+  %div.page-header
+    %h1 Listing Itmes
+  .row
+    .col-xs-12
+      %table#items-table
+        #items-pager

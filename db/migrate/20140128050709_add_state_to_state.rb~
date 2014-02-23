@@ -1,5 +1,0 @@
-class AddStateToState < ActiveRecord::Migration
-  def change
-    add_column :states, :state, :string
-  end
-end

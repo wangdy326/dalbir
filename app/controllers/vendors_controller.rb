@@ -3,6 +3,11 @@ class VendorsController < ApplicationController
   # GET /vendors.json
   def index
     @vendors = Vendor.all
+    @states = ""
+    State.all.each do |state|
+      @states += state.state + ":" + state.stcode + ";" 
+    end
+    @states = @states[0..@states.length - 2]
   end
 
   def items

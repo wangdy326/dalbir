@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-before_filter :load_vendor
+before_filter :load_vendor, :except => :jqedit
 
   # GET /items
   # GET /items.json
@@ -78,6 +78,29 @@ before_filter :load_vendor
     respond_to do |format|
       format.html { redirect_to vendor_items_path(@vendor) }
       format.json { head :no_content }
+    end
+  end
+
+  def jqedit
+    @vendor = Vendor.find(params[:id])
+    if params[:oper]
+      case params[:oper]
+        when 'edit'
+          item = @vendor.items.find(params[:id])
+          item.attributes = params.except(:oper,:id,:controller,:action)
+          item.save!
+        when 'add'
+          item = @vendor.items.create!(params.except(:oper,:id,:controller,:action))
+          item.save!
+        when 'del'
+          if params[:id]
+            @item = @vendor.items.find(params[:id])
+            @item.destroy
+          end
+      end
+    end
+    respond_to do |format|
+      format.js {}
     end
   end
 

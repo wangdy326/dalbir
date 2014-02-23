@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-before_filter :loadcus
+before_filter :loadcus, :except => :jqedit
   # GET /departments
   # GET /departments.json
   def index
@@ -74,6 +74,29 @@ before_filter :loadcus
 
     respond_to do |format|
       format.html { redirect_to customer_departments_path(@customer) }
+    end
+  end
+
+  def jqedit
+    @customer = Customer.find(params[:id])
+    if params[:oper]
+      case params[:oper]
+        when 'edit'
+          item = @customer.departments.find(params[:id])
+          item.attributes = params.except(:oper,:id,:controller,:action)
+          item.save!
+        when 'add'
+          item = @customer.departments.create!(params.except(:oper,:id,:controller,:action))
+          item.save!
+        when 'del'
+          if params[:id]
+            @item = @customer.departments.find(params[:id])
+            @item.destroy
+          end
+      end
+    end
+    respond_to do |format|
+      format.js {}
     end
   end
   

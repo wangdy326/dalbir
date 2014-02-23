@@ -1,29 +1,21 @@
+
+= content_for :page_specific_scripts do
+  = javascript_include_tag "departments"
+  :javascript
+    var $path_base = "/customers/" + #{@customer._id} + "/";
+    var grid_data = #{@departments.to_json};
+    jQuery(function($) {
+      var grid_selector = "#departments-table";
+      var pager_selector = "#departments-pager";
+
+      jQuery(grid_selector).jqGrid({
+        data: grid_data
+      });
+    });
 %div.page-content
-  %div.page-header.h3 Listing Departments
-  %div.row
-    %div.col-xs-12
-      %div.row
-        %div.table-responsive
-          %table#sample-table-1.table.table-striped.table-bordered.table-hover
-            %thead
-              %tr
-                %th.center Customer Name
-                %th Department
-                %th Buyer
-                %th Asst. Buyer
-                %th ICS
-                %th 
-            %tbody    
-            - @departments.each do |department|
-              %tr
-                %td= @customer.customer_name
-                %td= department.department
-                %td= department.buyer
-                %td= department.asst_buyer
-                %td= department.ics
-                %td
-                  = link_to 'Show', customer_department_path(@customer, department)
-                  = link_to 'Edit', edit_customer_department_path(@customer, department)
-                  = link_to 'Destroy', [@customer, department], :method => :delete, :data => { :confirm => 'Are you sure?' }
-%p= link_to 'New Department', new_customer_department_path(@customer)
-%p= link_to 'Customers', {:controller => "customers", :action => :index}
+  %div.page-header
+    %h1 Listing Departments
+  .row
+    .col-xs-12
+      %table#departments-table
+        #departments-pager

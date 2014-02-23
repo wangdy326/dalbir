@@ -132,10 +132,12 @@ ActiveRecord::Schema.define(:version => 20140205134356) do
     t.string   "item_id"
     t.string   "item_desc"
     t.string   "item_cost"
+    t.string   "item_name"
+    t.string   "item_shipping_point"
     t.string   "po_status"
     t.string   "po_total_amount"
-    t.date     "po_date"
-    t.date     "po_date_reqstd"
+    t.string   "po_date"
+    t.string   "po_date_reqstd"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "pono"

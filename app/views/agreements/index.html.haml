@@ -1,39 +1,24 @@
+
+= content_for :page_specific_scripts do
+  = javascript_include_tag "agreements"
+  :javascript
+    var grid_data = #{@agreements.to_json};
+    var customer_list = "#{@customers.to_s}";
+    var vendor_list = "#{@vendors.to_s}";
+    jQuery(function($) {
+      var grid_selector = "#agreements-table";
+      var pager_selector = "#agreements-pager";
+
+      jQuery(grid_selector).jqGrid({
+        data: grid_data
+      });
+    });
 %div.page-content
-  %div.page-header.h3 Listing Agreements
-  %div.row
-    %div.col-xs-12
-      %div.row
-        %div.table-responsive
-          %table#sample-table-1.table.table-striped.table-bordered.table-hover
-            %thead
-              %tr
-                %th Agreement No
-                %th Agreement Status
-                %th Customer
-                %th Vendor
-                %th Item
-                %th Case Price W
-                %th Case Price E
-                %th Marketing Allowance
-                %th Commitment
-                %th Purchaed Quantity
-                %th 
-            %tbody    
-            - @agreements.each do |agreement|
-              %tr
-                %td= agreement.agreementno
-                %td= agreement.agreement_status
-                %td= getcust(agreement.agreement_customer)
-                %td= getven(agreement.agreement_vendor)
-                %td= getitem(agreement.item)
-                %td= agreement.case_cost_w
-                %td= agreement.case_cost
-                %td= agreement.mktg_all
-                %td= agreement.commitment_string
-                %td= agreement.purchasedqty
-                %td
-                  = link_to 'Show', agreement
-                  = link_to 'Edit', edit_agreement_path(agreement)
-                  = link_to 'Destroy', agreement, :method => :delete, :data => { :confirm => 'Are you sure?' }
-                  = link_to 'Create PO', {:controller => "pos", :action => :new, :agreement_id => agreement.id}
+  %div.page-header
+    %h1 Listing Agreements
+  .row
+    .col-xs-12
+      %table#agreements-table
+        #agreements-pager
+
 = link_to 'New Agreement', new_agreement_path

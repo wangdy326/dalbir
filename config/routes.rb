@@ -7,12 +7,17 @@ resources :agreements do
 
 	resources :pos
 
+	member do
+		post 'pos/jqedit' => 'pos#jqedit'
+	end
 end
 
 resources :vendors do
-
-	 resources :items
-
+	 resources :items do
+	 end
+	 member do
+	 	  post 'items/jqedit' => 'items#jqedit'
+	 end
 end
 
 resources :brokers
@@ -20,8 +25,13 @@ resources :brokers
 resources :customers do
 
 	resources :departments
+	member do
+	 	  post 'departments/jqedit' => 'departments#jqedit'
+	 end
 end
  post 'vendors/jqedit' => 'vendors#jqedit'
+ post 'customers/jqedit' => 'customers#jqedit'
+ post 'agreements/jqedit' => 'agreements#jqedit'
 
  get 'cus_departments' => 'agreements#cus_departments'
 

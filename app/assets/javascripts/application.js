@@ -15,6 +15,8 @@
 //= require bootstrap-timepicker.min.js
 //= require typeahead-bs2.min.js
 //= require chosen.jquery.min.js
+//= require jquery.jqGrid.min
+//= require i18n/grid.locale-en
 
 jQuery(document).ready(function(){
   $(".chosen-select").chosen();
