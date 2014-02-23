@@ -2,7 +2,7 @@
 = content_for :page_specific_scripts do
   = javascript_include_tag "pos"
   :javascript
-    var $path_base = "/agreements/" + #{@agreement._id} + "/";
+    var $path_base = "/agreements/" + #{@agreement.id} + "/";
     var grid_data = #{@pos.to_json};
     jQuery(function($) {
       var grid_selector = "#pos-table";
