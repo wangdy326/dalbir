@@ -1,5 +1,5 @@
 class DepartmentsController < ApplicationController
-before_filter :loadcus, :except => :jqedit
+before_filter :loadcus
   # GET /departments
   # GET /departments.json
   def index
@@ -78,7 +78,7 @@ before_filter :loadcus, :except => :jqedit
   end
 
   def jqedit
-    @customer = Customer.find(params[:id])
+    # @customer = Customer.find(params[:id])
     if params[:oper]
       case params[:oper]
         when 'edit'

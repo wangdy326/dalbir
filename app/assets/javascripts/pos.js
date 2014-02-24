@@ -23,7 +23,7 @@ jQuery(function($) {
                         //editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback}
             }
       },
-      {name:'pono',index:'PO no', width:60, key: true, editable: true,editoptions:{size:"20",maxlength:"30"}},
+      {name:'pono',index:'PO no', width:60, editable: true,editoptions:{size:"20",maxlength:"30"}},
       {name:'item_name',index:'Item name',width:60,editable: false,editoptions:{size:"20",maxlength:"30"}},
       {name:'qty_string',index:'Quantity', width:60,editable: true,editoptions:{size:"20",maxlength:"30"}},
       {name:'item_shipping_point',index:'Item Shipping point', width:60,editable: false,editoptions:{size:"20",maxlength:"30"}},

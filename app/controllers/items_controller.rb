@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-before_filter :load_vendor, :except => :jqedit
+before_filter :load_vendor
 
   # GET /items
   # GET /items.json
@@ -82,7 +82,6 @@ before_filter :load_vendor, :except => :jqedit
   end
 
   def jqedit
-    @vendor = Vendor.find(params[:id])
     if params[:oper]
       case params[:oper]
         when 'edit'

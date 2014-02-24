@@ -1,5 +1,5 @@
 class PosController < ApplicationController
-before_filter :loadagr, :except => :jqedit
+before_filter :loadagr
 
 
   # GET /pos
@@ -82,7 +82,6 @@ before_filter :loadagr, :except => :jqedit
   end
 
   def jqedit
-    @agreement = Agreement.find(params[:id])
     if params[:oper]
       case params[:oper]
         when 'edit'
@@ -93,14 +92,14 @@ before_filter :loadagr, :except => :jqedit
           po = @agreement.pos.create!(params.except(:oper,:id,:controller,:action))
           po.save!
         when 'del'
-          if params[:poid]
-            @po = @agreement.pos.find(params[:poid])
+          if params[:id]
+            @po = @agreement.pos.find(params[:id])
             @po.destroy
           end
       end
     end
     respond_to do |format|
-      format.js {}
+      format.js { }
     end
   end
   
